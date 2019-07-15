@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/13 17:42:42 by anben             #+#    #+#             */
-/*   Updated: 2019/07/15 09:57:34 by anben            ###   ########.fr       */
+/*   Created: 2019/07/15 10:19:40 by anben             #+#    #+#             */
+/*   Updated: 2019/07/15 10:51:48 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef FT_LS_H
-# define FT_LS_H
-# define S_IFDIR
-# define S_IRUSR
+#include "ft_ls.h"
 
-# include <dirent.h>
-# include <stdio.h>
-# include <sys/types.h>
-# include "./libft/libft.h"
-# include <sys/stat.h>
+int	main(int ac, char *av[])
+{
+	DIR *dir;
+	struct dirent *d_path;
 
-void		ft_listdir(const char *rootname);
-
-# endif
+	if (ac != 2)
+	{
+		ft_putstr("Please provide directory name");
+		exit(1);
+	}
+	ft_listdir(av[1]);
+	exit(0);
+}
