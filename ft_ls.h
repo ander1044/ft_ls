@@ -21,6 +21,9 @@
 # include "./libft/libft.h"
 # include <sys/stat.h>
 
-void		ft_listdir(const char *rootname);
+void		    ft_listdir(const char *rootname);
+int             run_flags(char flag);
+unsigned char   scan_flag404(unsigned char *flag);
+int             flag404(char *rootname);
 
 # endif
