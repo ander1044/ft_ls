@@ -12,6 +12,11 @@
 
 #include "ft_ls.h"
 
+unsigned char   scan_flag(unsigned char *sign)
+{
+     flag404("-");
+    return (sign);
+}
 int run_flags(char flag)
 {
     if (flag == 'l')
@@ -26,8 +31,22 @@ int run_flags(char flag)
     return (5);
     return (0);
 }
-unsigned char   scan_flag404(unsigned char *flag)
+unsigned char   return_flag(int ac, char *av[])
 {
-    flag_404("-");
-    return ;
+    char flags;
+    int i;
+    int j;
+
+    i = 1;
+    flags = '\0';
+    while (i < av)
+    {
+        j = 0;
+        if (av[i][0] == '-')
+        {
+            j++;
+            if (av[i][1] == '\0')
+            return (scan_flag(flags));
+        }
+    }
 }

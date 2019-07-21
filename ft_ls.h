@@ -23,7 +23,7 @@
 
 void		    ft_listdir(const char *rootname);
 int             run_flags(char flag);
-unsigned char   scan_flag404(unsigned char *flag);
-int             flag404(char *rootname);
+unsigned char   scan_flag(unsigned char *sign);
+void             flag404(char *rootname);
 
 # endif
