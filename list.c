@@ -12,18 +12,34 @@
 
 #include "ft_ls.h"
 
-void	ft_listdir(const char *rootname)
+int	ft_listdir(char *alt, char *rootname, size_t root_len)
 {
-	DIR			*dir;
-	struct		dirent *d_path;
-	char		path[259] = {0};
+	DIR		*d_root;
+	t_list	*list;
 
-	if ((dir = opendir(rootname)) == NULL)
+	//if (d_root->d_name[0] != '.')
+
+	if ((d_root = opendir(rootname)) == NULL)
 	{
 		ft_putendl("No such directory found");
 		exit(1);
 	}
-	while ((d_path = readdir(dir)) != NULL)
+	list = listread(alt, rootname, root_len, d_root);
+	if (list)
+	{
+
+	}
+
+closedir(d_root);
+}
+
+t_list	*listread(char *alt, char *rootname, size_t root_len, DIR *d_root)
+{
+	t_folder	*d_path;
+	t_list		*list;	
+
+	list = NULL;
+	while ((d_path = readdir(d_root)) != NULL)
 	{
 		if (d_path->d_type == DT_DIR)
 		{
@@ -31,12 +47,13 @@ void	ft_listdir(const char *rootname)
 					(ft_strcmp(d_path->d_name, "..") == 0))
 				continue;
 			ft_putendl(d_path->d_name);
-			ft_putendl(rootname);
+			//ft_putendl(rootname);
 			ft_putendl(d_path->d_name);
-			ft_listdir(path);
+	//		ft_listdir(path);
 		}
 		else
 			ft_putstr(d_path->d_name);
 	}
-	closedir(dir);
+
+	
 }
