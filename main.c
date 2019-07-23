@@ -22,6 +22,6 @@ int	main(int ac, char *av[])
 		ft_putstr("Please provide directory name");
 		exit(1);
 	}
-	ft_listdir(av[1]);
+//	read_root(av[1]);
 	exit(0);
 }

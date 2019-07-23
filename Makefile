@@ -11,3 +11,36 @@
 # **************************************************************************** #
 
 
+NAME = ft_ls
+LIBFT = ./libft/
+CC = gcc
+NOR = norminette
+FLAGS = -Wall -Werror -Wextra
+ARC = ar rc
+SRC = d.c\
+	  
+	
+
+OBJ = ft_isdigit.o\
+
+
+
+# all: $(NAME)
+
+$(NAME):
+		$(CC) $(FLAGS) -c $(SRC)
+		$(ARC) $(NAME) $(OBJ)
+		ranlib $(NAME)
+
+all: $(NAME)
+
+norm:
+	$(NOR)
+
+clean:
+		rm -f *.o
+
+fclean: clean
+		rm -f $(NAME)
+
+re: fclean all

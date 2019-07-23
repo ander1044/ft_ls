@@ -19,16 +19,27 @@ unsigned char   scan_flag(unsigned char *sign)
 }
 int run_flags(char flag)
 {
-    if (flag == 'l')
-    return (1);
-    if (flag == 'r')
-    return (2);
-    if (flag == 'a')
-    return (3);
-    if (flag == 't')
-    return (4);
-    if (flag == 'R')
-    return (5);
+    while (flag)
+    {
+        if (flag == 'l')
+        return (1);
+        else if (flag == 'r')
+        return (2);
+        else if (flag == 'a')
+        return (3);
+        else if (flag == 't')
+        return (4);
+        else if (flag == 'R')
+        return (5);
+        else
+        {
+            ft_putstr("ls: illegal option --");
+            ft_putstr(flag);
+            ft_putendl("usage: ls [-Rart] [file ...]");
+            exit (1);
+        }
+        flag++;
+    }
     return (0);
 }
 unsigned char   return_flag(int ac, char *av[])

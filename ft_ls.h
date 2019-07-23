@@ -24,10 +24,11 @@
 typedef struct dirent	t_folder;
 typedef struct stat		t_stat;
 
-int		            ft_listdir(char *alt, char *rootname, size_t root_len);
+int		            read_root(char *alt, char *rootname, size_t root_len);
 int                 run_flags(char flag);
 unsigned char       scan_flag(unsigned char *sign);
 void                flag404(char *rootname);
-void                listdisplay(char *alt, char *d_root);
+t_list              *open_root(char *alt, char *rootname, size_t root_len, DIR *d_root);
+//void                listdisplay(char *alt, char *d_root);
 
 # endif
