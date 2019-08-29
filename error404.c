@@ -12,10 +12,8 @@
 
 #include "ft_ls.h"
 
-char    flag_404(char *rootname)
+char    not_found(char *dir_name)
 {
-    //flag error handler
-    ft_putstr(">> ft_ls: ");
-    ft_putstr(rootname);
-    ft_putendl(": Such file or folder  not found");
+    
+
 }

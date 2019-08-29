@@ -12,8 +12,6 @@
 
 # ifndef FT_LS_H
 # define FT_LS_H
-# define S_IFDIR
-# define S_IRUSR
 
 # include <dirent.h>
 # include <stdio.h>
@@ -21,14 +19,5 @@
 # include "./libft/libft.h"
 # include <sys/stat.h>
 
-typedef struct dirent	t_folder;
-typedef struct stat		t_stat;
-
-int		            read_root(char *alt, char *rootname, size_t root_len);
-int                 run_flags(char flag);
-unsigned char       scan_flag(unsigned char *sign);
-void                flag404(char *rootname);
-t_list              *open_root(char *alt, char *rootname, size_t root_len, DIR *d_root);
-//void                listdisplay(char *alt, char *d_root);
-
+void    o_dir(const char *dir_name);
 # endif
