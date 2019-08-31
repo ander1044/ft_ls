@@ -14,34 +14,38 @@
 
 void	o_dir(const char *content)
 {
-	char			contents[2000];
-	DIR				*dir;
+	char			c_path[2000];
 	struct dirent	*d;
-
+	DIR				*dir; 
+	
 	dir = opendir(content);
 	if (!dir)
-	return ;
+	{
+		ft_putstr("ft_ls:");
+		perror(content);
+		exit(1);
+	}
 	while ((d = readdir(dir)) != NULL)
 	{
-		if(ft_strcmp(d->d_name, ".") != 0 && ft_strcmp(d->d_name, "..")!=  0)
+		if(ft_strcmp(d->d_name, ".") != 0 && ft_strcmp(d->d_name, "..")!= 0)
 		{
-		ft_putendl(d->d_name);
-		ft_strcpy(contents, content);
-		ft_strcat(contents, "/");
-		ft_strcat(contents, d->d_name);
-		o_dir(contents);
+			ft_putstr(">>");
+			ft_putendl(d->d_name);
+			ft_strcpy(c_path, content);
+			ft_strcat(c_path, "/");
+			ft_strcat(c_path, d->d_name);
+			o_dir(c_path);
 		}
 
 	}
 	closedir(dir);
 }
 
-int	main(void)
+int	main(int ac, char *av[])
 {
-	char content[100];
+	char c_path;
+	if(ac == 1)
 
-	printf("typesomething");
-	scanf ("%s", content);
-	o_dir(content);
+	o_dir(c_path);
 	return (0);
 }
