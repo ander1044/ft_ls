@@ -19,5 +19,12 @@
 # include "./libft/libft.h"
 # include <sys/stat.h>
 
+typedef struct t_dir
+{
+    DIR     *dir;
+    
+    char    *path;
+    struct  t_dir *next;
+}           s_dir;
 void    o_dir(const char *dir_name);
 # endif

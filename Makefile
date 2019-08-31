@@ -12,36 +12,50 @@
 
 
 NAME = ft_ls
-LIBFT = ./libft/
 CC = gcc
 NOR = norminette
-FLAGS = -Wall -Werror -Wextra
+LIBFT = ./libft/
 ARC = ar rc
-SRC = d.c\
-	  
-	
+FLAGS = -Wall -Werror -Wextra
+#SRC_PATH = ./srcs/
+SRC =	ft_ls.c \
+#		error404.c \
+		opitions.c \
+		sort.c \
+		flags.c \
+		display.c
 
-OBJ = ft_isdigit.o\
 
 
+#INC =  -I ./includes/ft_ls.h -I $(LIBFT)libft.h
+SRC =	ft_ls.o \
+#		error404.o \
+		opitions.o \
+		sort.o \
+		flags.o \
+		display.o
 
-# all: $(NAME)
-
-$(NAME):
-		$(CC) $(FLAGS) -c $(SRC)
-		$(ARC) $(NAME) $(OBJ)
-		ranlib $(NAME)
 
 all: $(NAME)
 
-norm:
-	$(NOR)
+$(NAME): $(SRCO)
+	@make -C $(LIBFT_PATH)
+	@cc $(FLAGS) -o $(NAME) $(SRC) $(LIBFT)libft.a
+	@echo "\033[32mBinary \033[1;32m$(NAME)\033[1;0m\033[32m Created.\033[0m"
+
+$(SRC_PATH)%.o: $(SRC_PATH)%.c
+	@gcc $(FLAGS) -c $< -o $@
 
 clean:
-		rm -f *.o
+	@make -C $(LIBFT)/ clean
+	@/bin/rm -rf $(SRCO)
+	@echo "\033[31mObjects Files \033[1;31m$(OBJS_LIST)\033[1;0m\033[31mRemoved.\033[0m"
 
 fclean: clean
-		rm -f $(NAME)
+	@make -C $(LIBFT_PATH)/ fclean
+	@/bin/rm -rf $(NAME)
+	@echo "\033[31mBin \033[1;31m$(NAME)\033[1;0m\033[31m Removed.\033[0m"
 
 re: fclean all
-Makefile
+
+.PHONY: all fclean clean re

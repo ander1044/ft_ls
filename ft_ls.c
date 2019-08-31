@@ -12,31 +12,36 @@
 
 #include "ft_ls.h"
 
-void	o_dir(const char *dir_name)
+void	o_dir(const char *content)
 {
-	DIR			*dir;
-	struct		dirent *d_path;
-	char		path[259] = {0};
+	char			contents[2000];
+	DIR				*dir;
+	struct dirent	*d;
 
-	if ((dir = opendir(dir_name)) == NULL)
+	dir = opendir(content);
+	if (!dir)
+	return ;
+	while ((d = readdir(dir)) != NULL)
 	{
-		ft_putendl("ls: No such directory found");
-		exit(1);
-	}
-	while ((d_path = readdir(dir)) != NULL)
-	{
-		if (d_path->d_type == DT_DIR)
+		if(ft_strcmp(d->d_name, ".") != 0 && ft_strcmp(d->d_name, "..")!=  0)
 		{
-			if ((ft_strcmp(d_path->d_name, ".") == 0) ||
-					(ft_strcmp(d_path->d_name, "..") == 0))
-				continue;
-			ft_putendl(d_path->d_name);
-			ft_putendl(dir_name);
-			ft_putendl(d_path->d_name);
-			ft_listdir(path);
+		ft_putendl(d->d_name);
+		ft_strcpy(contents, content);
+		ft_strcat(contents, "/");
+		ft_strcat(contents, d->d_name);
+		o_dir(contents);
 		}
-		else
-			ft_putstr(d_path->d_name);
+
 	}
 	closedir(dir);
+}
+
+int	main(void)
+{
+	char content[100];
+
+	printf("typesomething");
+	scanf ("%s", content);
+	o_dir(content);
+	return (0);
 }
