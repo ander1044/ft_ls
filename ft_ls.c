@@ -6,7 +6,7 @@
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 13:09:37 by anben             #+#    #+#             */
-/*   Updated: 2019/08/29 13:09:57 by anben            ###   ########.fr       */
+/*   Updated: 2019/09/01 13:41:07 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,38 @@
 
 void	o_dir(const char *content)
 {
-	DIR				*d; 
-	
-	d = opendir(content);
-	if (!d)
+	DIR				*d;
+	struct dirent	*entries;
+	const char		*d_name;
+
+	if (!(d = opendir(content)))
 	{
 		ft_putstr("ft_ls:");
 		perror(content);
 		exit(1);
 	}
-	while(1)
+	while (1)
 	{
-		const char		*c_path;
-		struct dirent	*entry;
-
-		entry = readdir(d);
-	if(!entry)
-	{
-		break;
-	}
-	c_path = entry->d_name;
-	printf ("%s/%s\n", content, d_name);
-	if (! (entry->d_type & DT_DIR)) 
-	{
-	    printf ("%s/%s\n", content, d_name);
-	}
-	if (entry->d_type & DT_DIR) 
-	//while ((d = readdir(dir)) != NULL)
-	{
-		if(ft_strcmp(d->d_name, ".") != 0 && ft_strcmp(d->d_name, "..")!= 0)
+		if (!(entries = readdir(d)))
 		{
-			char path[PATH_MAX];
-			
-			printf ("%s\n", path);
-		/*	ft_putstr(">>");
-			ft_putendl(d->d_name);
-			ft_strcpy(c_path, content);
-			ft_strcat(c_path, "/");
-			ft_strcat(c_path, d->d_name);
-			o_dir(c_path);*/
+			break ;
 		}
-
+		d_name = entries->d_name;
+		ft_putstr(content);
+		ft_putchar('/');
+		ft_putendl(d_name);
+		if (!(entries->d_type & DT_DIR))
+		{
+			ft_putstr(content);
+			ft_putchar('/');
+			ft_putendl(d_name);
+		}
 	}
-	closedir(dir);
+	closedir(d);
 }
 
-int	main(int ac, char *av[])
+int	main(void)
 {
-	char *c_path;
-	if(ac == 1)
-	o_dir(c_path);
+	o_dir(".");
 	return (0);
 }
