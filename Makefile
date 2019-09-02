@@ -27,7 +27,8 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)<<./ft_ls is ready to test>>$(NC)"
 
 all: $(NAME)
-
+norm:
+	$(NOR)
 clean:
 	@echo "$(RED)<<deleting all objects>>$(NC)"
 	@make -C libft/ clean

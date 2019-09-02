@@ -31,20 +31,15 @@ void	o_dir(const char *content)
 			break ;
 		}
 		d_name = entries->d_name;
-		ft_putstr(content);
-		ft_putchar('/');
-		ft_putendl(d_name);
 		if (!(entries->d_type & DT_DIR))
 		{
-			ft_putstr(content);
-			ft_putchar('/');
 			ft_putendl(d_name);
 		}
 	}
 	closedir(d);
 }
 
-int	main(void)
+int		main(void)
 {
 	o_dir(".");
 	return (0);
