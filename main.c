@@ -14,14 +14,5 @@
 
 int	main(int ac, char *av[])
 {
-	DIR *dir;
-	struct dirent *d_path;
-
-	if (ac != 2)
-	{
-		ft_putstr("Please provide directory name");
-		exit(1);
-	}
-//	read_root(av[1]);
-	exit(0);
+	
 }

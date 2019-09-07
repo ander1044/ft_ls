@@ -12,8 +12,15 @@
 
 #include "ft_ls.h"
 
-char    not_found(char *dir_name)
+void flag_failure(char flag)
 {
-    
-
+    ft_putstr(TITLE);
+    ft_putstr(": ");
+    ft_putstr(" illegal option -- ");
+    ft_putchar(flag);
+    ft_putchar('\n');
+    ft_putstr("usage: ");
+    ft_putstr(TITLE);
+    ft_putendl(" [-lRart] [file ...]");
+    exit(1);
 }

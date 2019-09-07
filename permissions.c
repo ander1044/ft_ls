@@ -12,7 +12,24 @@
 
 #include "ft_ls.h"
 
-void	p_perm(struct stat item_stats)
+
+char		stat_type(struct stat st)
+{
+	if (S_ISREG(st.st_mode))
+		return ('-');
+	if (S_ISDIR(st.st_mode))
+		return ('d');
+	if (S_ISLNK(st.st_mode))
+		return ('l');
+	if (S_ISFIFO(st.st_mode))
+		return ('m');
+	if (S_ISSOCK(st.st_mode))
+		return ('s');
+	if (S_ISCHR(st.st_mode))
+		return ('c');
+	return ('-');
+}
+void	rights(struct stat item_stats)
 {
 	mode_t mode;
 

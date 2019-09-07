@@ -13,11 +13,21 @@
 # ifndef FT_LS_H
 # define FT_LS_H
 
+# include "./libft/libft.h"
+
 # include <dirent.h>
 # include <stdio.h>
+# include <pwd.h>
 # include <sys/types.h>
-# include "./libft/libft.h"
 # include <sys/stat.h>
+# include <time.h>
+
+# define L_FLG 1 
+# define T_FLG 2
+# define A_FLG 4
+# define R_UP 8
+# define R_LOW 16
+
 
 typedef struct t_dir
 {

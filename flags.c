@@ -17,25 +17,25 @@ unsigned char   scan_flag(unsigned char *sign)
      flag404("-");
     return (sign);
 }
-int run_flags(char flag)
+int run_flags(int flag)
 {
     while (flag)
     {
         if (flag == 'l')
-        return (1);
+        return (L_FLG);
         else if (flag == 'r')
-        return (2);
+        return (R_LOW);
         else if (flag == 'a')
-        return (3);
+        return (A_FLG);
         else if (flag == 't')
-        return (4);
+        return (T_FLG);
         else if (flag == 'R')
-        return (5);
+        return (R_UP);
         else
         {
             ft_putstr("ls: illegal option --");
             ft_putstr(flag);
-            ft_putendl("usage: ls [-Rart] [file ...]");
+            ft_putendl("usage: ls [-Rlart] [file ...]");
             exit (1);
         }
         flag++;
