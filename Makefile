@@ -11,14 +11,23 @@
 # **************************************************************************** #
 
 NAME  = ft_ls
-SRC	  = ft_ls.c
-OBJ	  = $(SRC:.c=.o)
 NOR   = norminette
 FLAGS = -Wall -Wextra -Werror
 RED	  =	\033[0;31m
 GREEN =	\033[0;32m
 NC    =	\033[0m
+SRC	  = ft_ls.c\
+		convert.c\
+		error_handling.c\
+		flags.c\
+		output.c\
+		output2.c\
+		sorting.c\
+		listing.c\
+		recursion.c\
+		setting_ls.c
 
+OBJ	  = $(SRC:.c=.o)
 
 $(NAME): $(OBJ)
 	@echo "$(GREEN)<<compiling executable>>$(NC)"

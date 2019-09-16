@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conmcase.c                                      :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 12:14:41 by anben             #+#    #+#             */
-/*   Updated: 2019/06/25 12:21:24 by anben            ###   ########.fr       */
+/*   Created: 2019/09/09 11:56:43 by anben             #+#    #+#             */
+/*   Updated: 2019/09/09 11:56:45 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_conmcase(char ch)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	if (ch == 0)
-		return (0);
-	if (ch >= 'a' && ch <= 'z')
-		ch = ch - 32;
-	else if (ch >= 'A' && ch <= 'Z')
-		ch = ch + 32;
-	return (0);
+	del((*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }

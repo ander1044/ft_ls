@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conmcase.c                                      :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 12:14:41 by anben             #+#    #+#             */
-/*   Updated: 2019/06/25 12:21:24 by anben            ###   ########.fr       */
+/*   Created: 2019/09/09 11:56:30 by anben             #+#    #+#             */
+/*   Updated: 2019/09/09 11:56:32 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_conmcase(char ch)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	if (ch == 0)
-		return (0);
-	if (ch >= 'a' && ch <= 'z')
-		ch = ch - 32;
-	else if (ch >= 'A' && ch <= 'Z')
-		ch = ch + 32;
-	return (0);
+	if (!lst)
+		return ;
+	if (lst->next)
+		ft_lstiter(lst->next, f);
+	f(lst);
 }

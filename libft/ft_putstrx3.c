@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conmcase.c                                      :+:      :+:    :+:   */
+/*   ft_putstrx3.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 12:14:41 by anben             #+#    #+#             */
-/*   Updated: 2019/06/25 12:21:24 by anben            ###   ########.fr       */
+/*   Created: 2019/09/15 13:58:12 by anben             #+#    #+#             */
+/*   Updated: 2019/09/15 14:00:49 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_conmcase(char ch)
+void	ft_putstrx3(char *s1, char *s2, char *s3)
 {
-	if (ch == 0)
-		return (0);
-	if (ch >= 'a' && ch <= 'z')
-		ch = ch - 32;
-	else if (ch >= 'A' && ch <= 'Z')
-		ch = ch + 32;
-	return (0);
+	if (!s1 && !s2 && !s3)
+		return ;
+	ft_putstr(s1);
+	ft_putstr(s2);
+	ft_putstr(s3);
 }

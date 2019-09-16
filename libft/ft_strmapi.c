@@ -14,7 +14,6 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t		n;
 	int			i;
 	char		*str;
 	char		*st1;
@@ -27,7 +26,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	if (str == NULL && st1 == NULL)
 		return (NULL);
-	n = ft_strlen(st1);
+	ft_strlen(st1);
 	while (st1[i])
 	{
 		str[i] = f(i, st1[i]);

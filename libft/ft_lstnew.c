@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/05 10:38:07 by anben             #+#    #+#             */
-/*   Updated: 2019/06/07 13:43:33 by anben            ###   ########.fr       */
+/*   Created: 2019/09/09 11:56:54 by anben             #+#    #+#             */
+/*   Updated: 2019/09/09 11:56:56 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	int	result;
-	int	sign;
-	int i;
+	t_list *new;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (str[i] && (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' ||
-			str[i] == '\v' || str[i] == '\f' || str[i] == '\r'))
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || *str == '+')
-		i++;
-	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	if (!(new = (t_list *)malloc(sizeof(*new))))
+		return (NULL);
+	if (content == NULL)
 	{
-		result = result * 10 + (str[i] - 48);
-		i++;
+		new->content = NULL;
+		new->content_size = 0;
 	}
-	return (result * sign);
+	else
+	{
+		if (!(new->content = malloc(content_size)))
+		{
+			free(new);
+			return (NULL);
+		}
+		ft_memcpy(new->content, content, content_size);
+		new->content_size = content_size;
+	}
+	new->next = NULL;
+	return (new);
 }

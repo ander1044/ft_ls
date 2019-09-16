@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conmcase.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anben <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/25 12:14:41 by anben             #+#    #+#             */
-/*   Updated: 2019/06/25 12:21:24 by anben            ###   ########.fr       */
+/*   Created: 2019/09/09 11:56:08 by anben             #+#    #+#             */
+/*   Updated: 2019/09/09 11:56:12 by anben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_conmcase(char ch)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (ch == 0)
-		return (0);
-	if (ch >= 'a' && ch <= 'z')
-		ch = ch - 32;
-	else if (ch >= 'A' && ch <= 'Z')
-		ch = ch + 32;
-	return (0);
+	new->next = *alst;
+	*alst = new;
 }

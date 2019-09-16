@@ -72,7 +72,14 @@ SRC = ft_isdigit.c\
 	  ft_conmcase.c\
 	  ft_conmcasei.c\
 	  ft_concasei.c\
-	  ft_jointostr.c
+	  ft_jointostr.c\
+	  ft_puttab.c\
+	  ft_lstadd.c\
+	  ft_lstdel.c\
+	  ft_lstdelone.c\
+	  ft_lstiter.c\
+	  ft_lstnew.c\
+	  ft_putstrx3.c
 
 OBJ = ft_isdigit.o\
 	  ft_memcmp.o\
@@ -131,7 +138,14 @@ OBJ = ft_isdigit.o\
 	  ft_conmcase.o\
 	  ft_conmcasei.o\
 	  ft_concasei.o\
-	  ft_jointostr.o
+	  ft_jointostr.o\
+	  ft_puttab.o\
+	  ft_lstadd.o\
+	  ft_lstdel.o\
+	  ft_lstdelone.o\
+	  ft_lstiter.o\
+	  ft_lstnew.o\
+	  ft_putstrx3.o
 
 # all: $(NAME)
 
