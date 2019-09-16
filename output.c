@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-void	handle_col(t_dir *lst, unsigned char flags)
+void	out_a(t_dir *lst, unsigned char flags)
 {
 	if (flags & 2)
 	{
@@ -51,7 +51,7 @@ void	display_l(t_dir *lst, char *path, unsigned char flags)
 	ft_putnbr(lst->size);
 	ft_putstr("\t");
 	convert_date(ctime(&lst->mtime));
-	handle_col(lst, flags);
+	out_a(lst, flags);
 	if ((S_ISLNK(lst->mode)))
 		ft_linkprint(path, lst);
 	ft_putchar('\n');
@@ -76,7 +76,7 @@ void	print_list(t_dir *list, unsigned char flags, char *path)
 	}
 }
 
-void	print_normal(t_dir *list, unsigned char flags)
+void	standard_out(t_dir *list, unsigned char flags)
 {
 	t_dir *ptr;
 
@@ -85,7 +85,7 @@ void	print_normal(t_dir *list, unsigned char flags)
 	{
 		if (flags & 2)
 		{
-			handle_col(ptr, flags);
+			out_a(ptr, flags);
 			ft_putstr("\n");
 			ptr = ptr->next;
 		}
@@ -93,7 +93,7 @@ void	print_normal(t_dir *list, unsigned char flags)
 		{
 			if (ptr->name[0] != '.')
 			{
-				handle_col(ptr, flags);
+				out_a(ptr, flags);
 				ft_putstr("\n");
 			}
 			ptr = ptr->next;
@@ -103,5 +103,5 @@ void	print_normal(t_dir *list, unsigned char flags)
 
 void	print_output(t_dir *list, unsigned char flags, char *path)
 {
-	(flags & 1) ? print_list(list, flags, path) : print_normal(list, flags);
+	(flags & 1) ? print_list(list, flags, path) : standard_out(list, flags);
 }

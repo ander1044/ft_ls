@@ -27,14 +27,14 @@
 typedef struct		s_dir
 {
 	char			*name;
-	mode_t			mode;
-	nlink_t			nlink;
 	char			*uid;
 	char			*gid;
-	off_t			size;
-	time_t			mtime;
 	int				type;
 	int				block;
+	mode_t			mode;
+	nlink_t			nlink;
+	off_t			size;
+	time_t			mtime;
 	struct s_dir	*next;
 }					t_dir;
 
@@ -43,7 +43,7 @@ int					error_handle(char *path, DIR *d_path, int ierrno,
 void				convert_date(char *str);
 void				delete_list(t_dir **list);
 void				list_add(t_dir **alst, struct dirent *de, char *path);
-void				basic_print(struct dirent *de, unsigned char flags,
+void				root_out(struct dirent *de, unsigned char flags,
 						DIR *dr);
 void				recursive_print(struct dirent *de, unsigned char flags,
 						char *path);
@@ -53,11 +53,11 @@ void				recursion(t_dir *list, unsigned char flags, char *path);
 char				*convert_un(int uid);
 char				*convert_gn(int gib);
 void				print_list(t_dir *list, unsigned char flags, char *path);
-void				print_normal(t_dir *list, unsigned char flags);
+void				standard_out(t_dir *list, unsigned char flags);
 void				print_output(t_dir *list, unsigned char flags, char *path);
-void				frontback_split(t_dir *source, t_dir **front_ref,
+void				inverse_split(t_dir *source, t_dir **front_ref,
 						t_dir **back_ref);
-void				merge_s(t_dir **head_ref, unsigned char flags);
+void				merge_sort(t_dir **head_ref, unsigned char flags);
 
 void				dirfile_error(char *path);
 void				ft_linkprint(char *path, t_dir *ptr);

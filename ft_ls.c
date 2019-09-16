@@ -32,7 +32,7 @@ void	ft_ls(char *d_path, unsigned char flags)
 	}
 	closedir(dire);
 	if (!(flags & 64))
-		merge_s(&content, flags);
+		merge_sort(&content, flags);
 	else
 		reverse_list(&content);
 	print_output(content, flags, d_path);

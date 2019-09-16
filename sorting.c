@@ -58,7 +58,7 @@ t_dir		*sort_merge_time(t_dir *a, t_dir *b, unsigned int flag)
 	return (result);
 }
 
-void		merge_s(t_dir **head_ref, unsigned char flags)
+void		merge_sort(t_dir **head_ref, unsigned char flags)
 {
 	t_dir *head;
 	t_dir *a;
@@ -67,9 +67,9 @@ void		merge_s(t_dir **head_ref, unsigned char flags)
 	head = *head_ref;
 	if ((head == NULL) || (head->next == NULL))
 		return ;
-	frontback_split(head, &a, &b);
-	merge_s(&a, flags);
-	merge_s(&b, flags);
+	inverse_split(head, &a, &b);
+	merge_sort(&a, flags);
+	merge_sort(&b, flags);
 	if (flags & 16)
 		*head_ref = sort_merge_time(a, b, flags);
 	else
@@ -103,7 +103,7 @@ t_dir		*sort_merge_list(t_dir *a, t_dir *b, unsigned char flags)
 	return (result);
 }
 
-void		frontback_split(t_dir *source, t_dir **front_ref, t_dir **back_ref)
+void		inverse_split(t_dir *source, t_dir **front_ref, t_dir **back_ref)
 {
 	t_dir *fast;
 	t_dir *slow;
