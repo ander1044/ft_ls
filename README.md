@@ -4,5 +4,7 @@ Re-Creating the command ls (list) using C-Langauge.
 
 # flags:
 [-Ralrt]
+-l working
+
 # instructions
 
