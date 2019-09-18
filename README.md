@@ -8,7 +8,7 @@ Re-Creating the command ls (list) using C-Langauge.
 * -R working
 * -a working
 * -l working
-
+* -r working
 
 # instructions
 
